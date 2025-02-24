@@ -1,1 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
 
+<head>
+    <meta charset="utf-8" />
+    <title>Manipulation de vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        .rouge {
+            color: red
+        }
+        
+        .bleu {
+            color: blue
+        }
+    </style>
+</head>
+
+<body>
+    <div id="monapp">
+        <form>
+            Couleur de la police :
+            <label><input type="radio" v-model="choix" value="rouge">Rouge</label>
+            <label><input type="radio" v-model="choix" value="bleu">Bleu </label>
+        </form>
+        <br>
+        <form>
+            Afficher ou cacher le paragraphe :
+            <input type="checkbox" v-model="afficher">
+        </form>
+        <br>
+        <div :class="choix" v-show="afficher">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit.Ullam pariatur‹ mollitia et, inventore delectus.Doloribus laudantium maiores at necessiti ipsum distinctio ?
+        </div>
+
+    </div>
+    <script>
+        const appli = {
+            data() {
+                return {
+                    choix: "",
+                    afficher: false,
+                }
+            }
+        };
+
+        // dans le checkbox si on coche, la valeur de v-model est true, sinn false, le v-model prend uniquement des valeurs boolean 
+        Vue.createApp(appli).mount("#monapp");
+    </script>
+</body>
+
+</html>
